@@ -104,6 +104,28 @@ export const KeyboardInput = ({
   }, [isOpen]);
 
   useEffect(() => {
+    if (!isOpen) return;
+
+    const handleDocumentClick = (event: MouseEvent) => {
+      // 클릭된 요소가 triggerRef, keyboardContainerRef 내부면 무시
+      const triggerEl = triggerRef.current;
+      const keyboardEl = keyboardContainerRef.current;
+      if (
+        triggerEl?.contains(event.target as Node) ||
+        keyboardEl?.contains(event.target as Node)
+      ) {
+        return;
+      }
+      setIsOpen(false);
+    };
+
+    document.addEventListener("mousedown", handleDocumentClick);
+    return () => {
+      document.removeEventListener("mousedown", handleDocumentClick);
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
     return () => {
       setIsOpen(false);
     };
