@@ -12,6 +12,8 @@ export interface KeyboardInputProps {
   type: KeyboardType;
   enabled: boolean;
   disableLanguageSwitch?: boolean;
+  primaryColor?: string;
+  specialKeyColor?: string;
 }
 
 export const KeyboardInput = ({
@@ -22,6 +24,8 @@ export const KeyboardInput = ({
   type,
   enabled,
   disableLanguageSwitch = false,
+  primaryColor = "#3AB8B7",
+  specialKeyColor = "#B0B8C1",
 }: KeyboardInputProps) => {
   const [isOpen, setIsOpen] = useState(true);
   // 키보드 위치 style 객체
@@ -122,6 +126,8 @@ export const KeyboardInput = ({
             type={type}
             disableLanguageSwitch={disableLanguageSwitch}
             onEnter={handleClose}
+            primaryColor={primaryColor}
+            specialKeyColor={specialKeyColor}
           />
         </div>
       )}

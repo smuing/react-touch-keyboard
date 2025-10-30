@@ -63,14 +63,14 @@
   .hg-button.hg-button-spacebar,
   .hg-button.hg-button-lang {
     flex: 1;
-    background-color: var(--color-B0B8C1);
+    background-color: var(--special-key-color, #B0B8C1);
     box-shadow: 0 1px #98989E;
     font-size: pxToVmin(22);
     font-weight: 500;
   }
 
   .hg-button.hg-button-enter {
-    background-color: var(--color-3AB8B7);
+    background-color: var(--primary-color, #3AB8B7);
   }
 
   .hg-button.hg-button-lang {
@@ -100,7 +100,7 @@
     }
 
     .hg-button.hg-button-bksp,
-    .hg-button.hg-button-enter, {
+    .hg-button.hg-button-enter {
       flex: none;
     }
 

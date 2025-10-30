@@ -17,6 +17,8 @@ export interface KeyboardProps {
   key?: string;
   initCaps?: boolean;
   keyboardRef?: MutableRefObject<KeyboardInstance | null>;
+  primaryColor?: string;
+  specialKeyColor?: string;
 }
 
 export const Keyboard = ({
@@ -27,6 +29,8 @@ export const Keyboard = ({
   onEnter,
   initCaps = false,
   keyboardRef,
+  primaryColor = "#3AB8B7",
+  specialKeyColor = "#B0B8C1",
 }: KeyboardProps) => {
   const [language, setLanguage] = useState(type);
   const layout = useMemo(
@@ -101,6 +105,14 @@ export const Keyboard = ({
   useEffect(() => {
     setLayoutName(!initCaps ? "default" : "shift");
   }, [initCaps]);
+
+  useEffect(() => {
+    const keyboard = document.querySelector('.custom-keyboard');
+    if (keyboard) {
+      (keyboard as HTMLElement).style.setProperty('--primary-color', primaryColor);
+      (keyboard as HTMLElement).style.setProperty('--special-key-color', specialKeyColor);
+    }
+  }, [primaryColor, specialKeyColor]);
 
   return (
     <KeyboardReact
