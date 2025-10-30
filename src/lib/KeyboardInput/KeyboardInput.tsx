@@ -10,6 +10,7 @@ export interface KeyboardInputProps {
   onChange: (value: string) => void;
   onEnter?: () => void;
   type: KeyboardType;
+  initOpen?: boolean;
   enabled: boolean;
   disableLanguageSwitch?: boolean;
   primaryColor?: string;
@@ -22,12 +23,13 @@ export const KeyboardInput = ({
   onChange,
   onEnter,
   type,
+  initOpen = false,
   enabled,
   disableLanguageSwitch = false,
   primaryColor = "#3AB8B7",
   specialKeyColor = "#B0B8C1",
 }: KeyboardInputProps) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(initOpen);
   // 키보드 위치 style 객체
   const [position, setPosition] = useState({});
   const keyboardContainerRef = useRef<HTMLDivElement>(null);
