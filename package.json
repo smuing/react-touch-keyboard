@@ -50,6 +50,6 @@
   },
   "repository" : {
     "type": "git",
-    "url" : "git://gitbub.com/"
+    "url": "https://github.com/smuing/react-touch-keyboard.git"
   }
 }
