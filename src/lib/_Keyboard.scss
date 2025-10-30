@@ -1,7 +1,6 @@
 // px을 vmin으로 변환 함수
 @function pxToVmin($px) {
-  $ratio: ($px / var(--keyboard-base-size, 1080)) * 100;
-  @return $ratio + vmin;
+  @return calc(#{$px} / 1080 * 100vmin);
 }
 
 .custom-keyboard {

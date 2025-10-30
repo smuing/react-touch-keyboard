@@ -1,12 +1,25 @@
 {
   "name": "react-touch-keyboard-input",
-  "version": "0.0.3",
+  "version": "0.1.1",
   "private": false,
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
+  "files": ["dist"],
   "browser": "./browser/specific/main.js",
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
   "dependencies": {
+    "hangul-js": "^0.2.6",
+    "react-simple-keyboard": "^3.8.129"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.9",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-typescript": "^12.3.0",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
@@ -15,21 +28,19 @@
     "@types/node": "^16.18.126",
     "@types/react": "^18.2.2",
     "@types/react-dom": "^18.2.2",
-    "hangul-js": "^0.2.6",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "react-simple-keyboard": "^3.8.129",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4",
-    "sass": "^1.77.4"
+    "rollup": "^2.79.2",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "sass": "^1.77.4",
+    "typescript": "^4.9.5"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "rollup -c",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "rm -rf dist && mkdir dist && tsc"
+    "prepare": "rm -rf dist && npm run build"
   },
   "eslintConfig": {
     "extends": [
@@ -49,7 +60,7 @@
       "last 1 safari version"
     ]
   },
-  "repository" : {
+  "repository": {
     "type": "git",
     "url": "https://github.com/smuing/react-touch-keyboard-input.git"
   }
